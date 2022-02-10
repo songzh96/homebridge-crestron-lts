@@ -1,0 +1,828 @@
+{
+  "pluginAlias": "HomebridgeCrestron",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "placeholder": "HomebridgeCrestron"
+      },
+      "host": {
+        "title": "Host",
+        "type": "string",
+        "placeholder": "192.168.1.100",
+        "required": true,
+        "description": "Crestron processor IP"
+      },
+      "port": {
+        "title": "Port",
+        "type": "string",
+        "placeholder": "50001",
+        "required": true,
+        "description": "Crestron processor control port"
+      },
+      "AirPurifier": {
+        "title": "AirPurifier",
+        "type": "array",
+        "items": {
+          "title": "AirPurifier Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "AirPurifier",
+              "required": true
+            }
+          }
+        }
+      },
+      "Lightbulb": {
+        "title": "Lightbulb",
+        "type": "array",
+        "items": {
+          "title": "Lightbulb Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Lightbulb",
+              "required": true
+            }
+          }
+        }
+      },
+      "DimLightbulb": {
+        "title": "DimLightbulb",
+        "type": "array",
+        "items": {
+          "title": "DimLightbulb Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "DimLIGHT",
+              "required": true
+            }
+          }
+        }
+      },
+      "CTLightbulb": {
+        "title": "CTLightbulb",
+        "type": "array",
+        "items": {
+          "title": "CTLightbulb Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "CTLIGHT",
+              "required": true
+            }
+          }
+        }
+      },
+      "HueLightbulb": {
+        "title": "HueLightbulb",
+        "type": "array",
+        "items": {
+          "title": "HueLightbulb Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "HueLIGHT",
+              "required": true
+            }
+          }
+        }
+      },
+      "Switch": {
+        "title": "Switch",
+        "type": "array",
+        "items": {
+          "title": "Switch Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Switch",
+              "required": true
+            }
+          }
+        }
+      },
+      "ProgrammableSwitch": {
+        "title": "ProgrammableSwitch",
+        "type": "array",
+        "items": {
+          "title": "ProgrammableSwitch Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "ProgrammableSwitch",
+              "required": true
+            }
+          }
+        }
+      },
+      "Outlet": {
+        "title": "Outlet",
+        "type": "array",
+        "items": {
+          "title": "Outlet Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Outlet",
+              "required": true
+            }
+          }
+        }
+      },
+      "Faucet": {
+        "title": "Faucet",
+        "type": "array",
+        "items": {
+          "title": "Faucet Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Faucet",
+              "required": true
+            }
+          }
+        }
+      },
+      "Valve": {
+        "title": "Valve",
+        "type": "array",
+        "items": {
+          "title": "Valve Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Valve",
+              "required": true
+            }
+          }
+        }
+      },
+      "Lock": {
+        "title": "Lock",
+        "type": "array",
+        "items": {
+          "title": "Lock Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Lock",
+              "required": true
+            }
+          }
+        }
+      },
+      "Fan": {
+        "title": "Fan",
+        "type": "array",
+        "items": {
+          "title": "Fan Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Fan",
+              "required": true
+            }
+          }
+        }
+      },
+      "WindowCovering": {
+        "title": "WindowCovering",
+        "type": "array",
+        "items": {
+          "title": "WindowCovering Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "WindowCovering",
+              "required": true
+            }
+          }
+        }
+      },
+      "Window": {
+        "title": "Window",
+        "type": "array",
+        "items": {
+          "title": "Window Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Window",
+              "required": true
+            }
+          }
+        }
+      },
+      "Door": {
+        "title": "Door",
+        "type": "array",
+        "items": {
+          "title": "Door Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Door",  
+              "required": true
+            }
+          }
+        }
+      },
+      "GarageDoor": {
+        "title": "GarageDoor",
+        "type": "array",
+        "items": {
+          "title": "GarageDoor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "GarageDoor",  
+              "required": true
+            }
+          }
+        }
+      },
+      "HeaterCooler": {
+        "title": "HeaterCooler",
+        "type": "array",
+        "items": {
+          "title": "HeaterCooler Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "HeaterCooler",
+              "required": true
+            }
+          }
+        }
+      },
+      "Heater": {
+        "title": "Heater",
+        "type": "array",
+        "items": {
+          "title": "Heater Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Heater",
+              "required": true
+            }
+          }
+        }
+      },
+      "Thermostat": {
+        "title": "Thermostat",
+        "type": "array",
+        "items": {
+          "title": "Thermostat Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Thermostat",
+              "required": true
+            }
+          }
+        }
+      },
+      "HumidifierDehumidifier": {
+        "title": "HumidifierDehumidifier",
+        "type": "array",
+        "items": {
+          "title": "HumidifierDehumidifier Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "HumidifierDehumidifier",
+              "required": true
+            }
+          }
+        }
+      },
+      "SecuritySystem": {
+        "title": "SecuritySystem",
+        "type": "array",
+        "items": {
+          "title": "SecuritySystem Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "SecuritySystem",
+              "required": true
+            }
+          }
+        }
+      },
+      "Television": {
+        "title": "Television",
+        "type": "array",
+        "items": {
+            "title": "Television Configuration",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "number",
+                    "placeholder": 1,
+                    "minimum": 1,
+                    "required": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "placeholder": "TV1",
+                    "required": true
+                },
+                "inputs": {
+                    "title": "Inputs",
+                    "type": "array",
+                    "items": {
+                        "title": "Input Names",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "type": "string",
+                                "placeholder": "HDMI1",
+                                "required": true
+                            },
+                            "type": {
+                                "title": "Type",
+                                "type": "number",
+                                "placeholder": 3,
+                                "required": true,
+                                "oneOf": [
+                                  { "title": "Other", "enum": [0] },
+                                  { "title": "Home Screen", "enum": [1] },
+                                  { "title": "Tuner", "enum": [2] },
+                                  { "title": "HDMI", "enum": [3] },
+                                  { "title": "Composite Video", "enum": [4] },
+                                  { "title": "S-Video", "enum": [5] },
+                                  { "title": "Component Video", "enum": [6] },
+                                  { "title": "DVI", "enum": [7] },
+                                  { "title": "Airplay", "enum": [8] },
+                                  { "title": "USB", "enum": [9] },
+                                  { "title": "Application", "enum": [10] }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+      "AirQualitySensor": {
+        "title": "AirQualitySensor",
+        "type": "array",
+        "items": {
+          "title": "AirQualitySensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "AirQualitySensor",
+              "required": true
+            },
+            "voc": {
+              "title": "VOCDensity",
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "CarbonDioxideSensor": {
+        "title": "CarbonDioxideSensor",
+        "type": "array",
+        "items": {
+          "title": "CarbonDioxideSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "CarbonDioxideSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "CarbonMonoxideSensor": {
+        "title": "CarbonMonoxideSensor",
+        "type": "array",
+        "items": {
+          "title": "CarbonMonoxideSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "CarbonMonoxideSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "ContactSensor": {
+        "title": "ContactSensor",
+        "type": "array",
+        "items": {
+          "title": "ContactSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "ContactSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "HumiditySensor": {
+        "title": "HumiditySensor",
+        "type": "array",
+        "items": {
+          "title": "HumiditySensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "HumiditySensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "LeakSensor": {
+        "title": "LeakSensor",
+        "type": "array",
+        "items": {
+          "title": "LeakSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "LeakSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "LightSensor": {
+        "title": "LightSensor",
+        "type": "array",
+        "items": {
+          "title": "LightSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "LightSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "MotionSensor": {
+        "title": "MotionSensor",
+        "type": "array",
+        "items": {
+          "title": "MotionSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "MotionSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "OccupancySensor": {
+        "title": "OccupancySensor",
+        "type": "array",
+        "items": {
+          "title": "OccupancySensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "OccupancySensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "SmokeSensor": {
+        "title": "SmokeSensor",
+        "type": "array",
+        "items": {
+          "title": "SmokeSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "SmokeSensor",
+              "required": true
+            }
+          }
+        }
+      },
+      "TemperatureSensor": {
+        "title": "TemperatureSensor",
+        "type": "array",
+        "items": {
+          "title": "TemperatureSensor Configuration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "type": "number",
+              "placeholder": 1,
+              "minimum": 1,
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "TemperatureSensor",
+              "required": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
