@@ -54,6 +54,8 @@ export class FaucetAccessory {
     const isOn = this.States.Active;
     this.platform.log.debug(`${this.deviceType}:${this.id}: Get Active From Homekit -> ${isOn}`);
     this.platform.sendData(`${this.deviceType}:${this.id}:${this.getPowerStateMsg}:*`);
+    await this.platform.sleep(100);
+    this.service.updateCharacteristic(this.platform.Characteristic.InUse, isOn);
     return isOn;
   }
 

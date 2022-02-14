@@ -7,14 +7,15 @@ import { EventEmitter } from 'events';
 export class GarageDoorAccessory {
   private service: Service;
   private id: number;
+  private SerialNumber: string;
   private deviceType = 'GarageDoor';
   private eventStateStateMsg = 'eventTargetState';
   private setStateStateMsg = 'setTargetState';
   private getStateStateMsg = 'getTargetState';
 
   private States = {
-    CurrentState: 0,
-    TargetState: 0,
+    CurrentState: 1,
+    TargetState: 1,
   };
 
   constructor(
@@ -23,11 +24,12 @@ export class GarageDoorAccessory {
     private eventEmitter: EventEmitter,
   ) {
     this.id = accessory.context.device.id;
-    this.eventEmitter.on(`${this.deviceType}:${this.id}:${this.eventStateStateMsg}`, this.eventStateStateMsgEvent.bind(this));
+    this.SerialNumber = accessory.UUID.substring(0, 8);
+    this.eventEmitter.on(`${this.deviceType}:${this.id}:${this.eventStateStateMsg}`, this.eventGarageDoorStateMsgEvent.bind(this));
     this.accessory.getService(this.platform.Service.AccessoryInformation)!
       .setCharacteristic(this.platform.Characteristic.Manufacturer, 'KOMEN SMART')
       .setCharacteristic(this.platform.Characteristic.Model, this.deviceType + this.id)
-      .setCharacteristic(this.platform.Characteristic.SerialNumber, 'abcde');
+      .setCharacteristic(this.platform.Characteristic.SerialNumber, this.SerialNumber);
 
     this.service = this.accessory.getService(this.platform.Service.GarageDoorOpener) || this.accessory.addService(this.platform.Service.GarageDoorOpener);
     this.service.setCharacteristic(this.platform.Characteristic.Name, accessory.context.device.name);
@@ -49,19 +51,20 @@ export class GarageDoorAccessory {
   }
 
   async getTargetState(): Promise<CharacteristicValue> {
-    const State = this.States.CurrentState;
-    this.platform.log.debug(`${this.deviceType}:${this.id}: Get CurrentState From Homekit -> ${State}`);
+    const State = this.States.TargetState;
+    this.platform.log.debug(`${this.deviceType}:${this.id}: Get TargetState From Homekit -> ${State}`);
     this.platform.sendData(`${this.deviceType}:${this.id}:${this.getStateStateMsg}:*`);
     return State;
   }
 
-  async eventStateStateMsgEvent(value: number) {
+  async eventGarageDoorStateMsgEvent(value: number) {
     const tmpValue = value;
-    if (this.States.CurrentState !== tmpValue) {
-      this.States.CurrentState = tmpValue;
-      this.platform.log.debug(`${this.deviceType}:${this.id}: Event CurrentState By Crestron Processor -> ${this.States.CurrentState}`);
-      this.service.updateCharacteristic(this.platform.Characteristic.CurrentDoorState, this.States.CurrentState);
-      this.service.updateCharacteristic(this.platform.Characteristic.TargetDoorState, this.States.TargetState);
-    }
+    this.States.TargetState = tmpValue;
+    this.States.CurrentState = tmpValue;
+    this.platform.log.debug(`${this.deviceType}:${this.id}: Event DoorState By Crestron Processor -> ${this.States.CurrentState}`);
+    this.service.updateCharacteristic(this.platform.Characteristic.TargetDoorState, this.States.TargetState);
+    await this.platform.sleep(100);
+    this.service.updateCharacteristic(this.platform.Characteristic.CurrentDoorState, this.States.CurrentState);
+
   }
 }

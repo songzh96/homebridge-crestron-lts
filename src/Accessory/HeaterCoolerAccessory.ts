@@ -72,6 +72,7 @@ export class HeaterCoolerAccessory {
           .setProps({
             minValue: this.States.minTemperature,
             maxValue: this.States.maxTemperature,
+            minStep: 1,
           })
           .onGet(this.getTargetTemperature.bind(this))
           .onSet(this.setTargetTemperature.bind(this));
@@ -79,6 +80,7 @@ export class HeaterCoolerAccessory {
           .setProps({
             minValue: this.States.minTemperature,
             maxValue: this.States.maxTemperature,
+            minStep: 1,
           })
           .onGet(this.getTargetTemperature.bind(this))
           .onSet(this.setTargetTemperature.bind(this));
@@ -131,10 +133,10 @@ export class HeaterCoolerAccessory {
   }
 
   async getTargetHeaterCoolerState(): Promise<CharacteristicValue> {
-    const State = this.States.CurrentState;
-    this.platform.log.debug(`${this.deviceType}:${this.id}: Get CurrentState From Homekit -> ${State}`);
+    const ModeState = this.States.TargetState;
+    this.platform.log.debug(`${this.deviceType}:${this.id}: Get CurrentState From Homekit -> ${ModeState}`);
     this.platform.sendData(`${this.deviceType}:${this.id}:${this.getModeStateMsg}:*`);
-    return State;
+    return ModeState;
   }
 
   async setTargetTemperature(value: CharacteristicValue) {
@@ -172,7 +174,11 @@ export class HeaterCoolerAccessory {
   }
 
   async getSpeed(): Promise<CharacteristicValue> {
-    const speed = this.States.Speed;
+    let speed = this.States.Speed;
+    //this.platform.log.info('speed: ', speed);
+    if(!speed){
+      speed = 0;
+    }
     this.platform.log.debug(`${this.deviceType}:${this.id}: Get Speed From Homekit -> ${speed}`);
     this.platform.sendData(`${this.deviceType}:${this.id}:${this.getRotationSpeedMsg}:*`);
     return speed;
@@ -200,6 +206,9 @@ export class HeaterCoolerAccessory {
       }
       this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetHeaterCoolerState By Crestron Processor -> $(this.States.TargetHeaterCoolerState}`);
       this.service.updateCharacteristic(this.platform.Characteristic.TargetHeaterCoolerState, this.States.TargetState);
+      await this.platform.sleep(100);
+      //this.platform.log.info('TargetHeaterCoolerState: ', this.States.TargetState);
+
       this.service.updateCharacteristic(this.platform.Characteristic.CurrentHeaterCoolerState, this.States.CurrentState);
 
     }
@@ -211,6 +220,8 @@ export class HeaterCoolerAccessory {
       this.States.TargetTemperature = tmpTargetTemperature;
       this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetTemperature By Crestron Processor -> ${tmpTargetTemperature}`);
       this.service.updateCharacteristic(this.platform.Characteristic.CoolingThresholdTemperature, this.States.TargetTemperature);
+      await this.platform.sleep(100);
+      //this.platform.log.info('TargetTemperature: ', this.States.Brightness);
       this.service.updateCharacteristic(this.platform.Characteristic.HeatingThresholdTemperature, this.States.TargetTemperature);
     }
   }

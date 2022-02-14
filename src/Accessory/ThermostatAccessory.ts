@@ -59,6 +59,7 @@ export class ThermostatAccessory {
           .setProps({
             minValue: this.States.minTemperature,
             maxValue: this.States.maxTemperature,
+            minStep: 1,
           })
           .onGet(this.getTargetTemperature.bind(this))
           .onSet(this.setTargetTemperature.bind(this));

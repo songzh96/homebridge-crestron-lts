@@ -43,10 +43,6 @@ export class CTLightAccessory {
       .onSet(this.setBrightness.bind(this))      // SET - bind to the 'setBrightness` method below
       .onGet(this.getBrightness.bind(this));
     this.service.getCharacteristic(this.platform.Characteristic.ColorTemperature)
-      .setProps({
-        minValue: 166,
-        maxValue: 333,
-      })
       .onSet(this.setCT.bind(this))      // SET - bind to the 'setBrightness` method below
       .onGet(this.getCT.bind(this));
   }
@@ -100,7 +96,7 @@ export class CTLightAccessory {
       this.States.CT = tmpCTValue;
       const CTValue_K = Math.round(1000000/tmpCTValue);
       this.platform.sendData(`${this.deviceType}:${this.id}:${this.setLightCTMsg}:${CTValue_K}:*`);
-      this.platform.log.debug(`${this.deviceType}:${this.id}: Set ColorTemperature By Homekit -> ${this.States.CT}`);
+      this.platform.log.debug(`${this.deviceType}:${this.id}: Set ColorTemperature By Homekit -> ${CTValue_K}`);
     }
   }
 
@@ -118,22 +114,26 @@ export class CTLightAccessory {
   async eventBrightnessMsgEvent(value: number) {
     const tmpBrightnessValue = value;
     if (this.States.Brightness !== tmpBrightnessValue) {
+
       this.States.On = (tmpBrightnessValue > 0) ? true : false;
       this.States.Brightness = tmpBrightnessValue;
+      //this.platform.log.info('this.States.Brightness:', this.States.Brightness);
       this.platform.log.debug(`${this.deviceType}:${this.id}: Event Brightness By Crestron Processor -> ${this.States.Brightness}`);
 
       this.service.updateCharacteristic(this.platform.Characteristic.On, this.States.On);
+      await this.platform.sleep(100);
+      //this.platform.log.info('Brightness: ', this.States.Brightness);
       this.service.updateCharacteristic(this.platform.Characteristic.Brightness, this.States.Brightness);
     }
   }
 
   async eventCTMsgEvent(value: number) {
     const tmpCTValue_K = value;
-    if (this.States.CT !== tmpCTValue_K) {
+    if (this.States.CT !== tmpCTValue_K && tmpCTValue_K > 2000) {
       this.States.CT = Math.round(1000000/tmpCTValue_K);
       this.platform.log.debug(`${this.deviceType}:${this.id}: Event ColorTemperature By Crestron Processor -> ${this.States.CT}`);
 
-      this.service.updateCharacteristic(this.platform.Characteristic.Brightness, this.States.CT);
+      this.service.updateCharacteristic(this.platform.Characteristic.ColorTemperature, this.States.CT);
     }
   }
 

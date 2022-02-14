@@ -63,6 +63,7 @@ export class HeaterAccessory {
       .setProps({
         minValue: this.States.minTemperature,
         maxValue: this.States.maxTemperature,
+        minStep: 1,
       })
       .onGet(this.getTargetTemperature.bind(this))
       .onSet(this.setTargetTemperature.bind(this));
@@ -89,7 +90,7 @@ export class HeaterAccessory {
     if (this.States.TargetTemperature !== tmpHeatingThresholdTemperature) {
       this.States.TargetTemperature = tmpHeatingThresholdTemperature;
       this.States.TargetTemperature = tmpHeatingThresholdTemperature;
-      this.platform.sendData(`${this.deviceType}:${this.id}:${this.setTargetTempMsg}:${tmpHeatingThresholdTemperature * 10}:*`);
+      this.platform.sendData(`${this.deviceType}:${this.id}:${this.setTargetTempMsg}:${tmpHeatingThresholdTemperature}:*`);
       this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic HeatingThresholdTemperature By Homekit -> ${tmpHeatingThresholdTemperature}`);
       this.service.updateCharacteristic(this.platform.Characteristic.CoolingThresholdTemperature, tmpHeatingThresholdTemperature);
     }

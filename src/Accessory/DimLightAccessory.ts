@@ -93,7 +93,7 @@ export class DimLightAccessory {
 
       this.service.updateCharacteristic(this.platform.Characteristic.On, this.States.On);
       await this.platform.sleep(100);
-      this.platform.log.info('Brightness: ', this.States.Brightness);
+      //this.platform.log.info('Brightness: ', this.States.Brightness);
       this.service.updateCharacteristic(this.platform.Characteristic.Brightness, this.States.Brightness);
     }
   }

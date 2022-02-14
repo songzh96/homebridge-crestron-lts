@@ -96,7 +96,7 @@ export class HomebridgePlatform implements DynamicPlatformPlugin {
   }
 
   sendData(data: string) {
-    this.log.debug(`send data to crestron: ${data}`);
+    //this.log.debug(`send data to crestron: ${data}`);
     this.cresKit.writeData(data);
   }
 
