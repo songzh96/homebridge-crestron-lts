@@ -1,6 +1,6 @@
 {
   "private": false,
-  "displayName": "HomebridgeCrestron",
+  "displayName": "Homebridge Crestron",
   "name": "homebridge-crestron-lts",
   "version": "1.0.33",
   "description": "A short description about what your plugin does.",

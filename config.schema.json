@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "HomebridgeCrestron",
+  "pluginAlias": "Homebridge Crestron",
   "pluginType": "platform",
   "singular": true,
   "schema": {
@@ -9,7 +9,7 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "placeholder": "HomebridgeCrestron"
+        "placeholder": "Homebridge Crestron"
       },
       "host": {
         "title": "Host",
