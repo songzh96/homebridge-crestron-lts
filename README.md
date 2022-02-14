@@ -25,6 +25,7 @@ This [Homebridge](https://github.com/homebridge/homebridge) plugin exposes to Ap
 Homebridge Crestron communicates with TCP.
 
 ### Supported Homekit Devices
+
   <img src="img/Accessories.png">
 
 ### HARDWARE Prerequisites
