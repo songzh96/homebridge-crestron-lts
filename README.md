@@ -26,7 +26,7 @@ Homebridge Crestron communicates with TCP.
 
 ### Supported Homekit Devices
   <img src="img/Accessories.png">
-  
+
 ### HARDWARE Prerequisites
 1. Raspberry(Or other devices that can install homebridge, such as NAS, Win, MAC...)
 2. Crestron Professor(Series 3 and Series 4 mainframes supporting SIMPL programming)
@@ -44,4 +44,4 @@ Homebridge Crestron communicates with TCP.
 7. Save config and then restart homebridge
 8. Add Device to Homekit
 9. Have FUN
-  <img src="img/homekit.jpg">
+  <img src="img/HomeKit.jpg">
