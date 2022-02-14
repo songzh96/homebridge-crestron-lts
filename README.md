@@ -41,7 +41,7 @@ Homebridge Crestron communicates with TCP.
 2. install homebridge-crestron-lts
   <img src="img/homebridge-crestron-lts.png">  
 
-3. Download Crestron macro files on the release page
+3. Download Crestron macro files on the [release page](https://github.com/songzh96/homebridge-crestron-lts/releases/tag/v1.0.0) Then put the file in your program
 
 4. Programming in SIMPL
   <img src="img/simpl.png">  
