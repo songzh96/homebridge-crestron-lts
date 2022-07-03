@@ -18,10 +18,10 @@
 </span>
 
 ## Homebridge plugin for crestron
-Copyright © 2022 Songzh. All rights reserved.
+Copyright © 2022 WUMENGTECH. All rights reserved.
 
 ### Introduction
-This [Homebridge](https://github.com/homebridge/homebridge) plugin exposes to Apple's [HomeKit](http://www.apple.com/ios/home/) devices (lights, plugs, sensors, switches, ...) and virtual devices on a Crestron professor.
+This [Homebridge](https://github.com/homebridge/homebridge) plugin exposes to Apple's [HomeKit](http://www.apple.com/ios/home/) devices (lights, plugs, sensors, switches, ...) and virtual devices on a Crestron Processor .
 Homebridge Crestron communicates with TCP.
 
 ### Supported Homekit Devices
@@ -33,7 +33,7 @@ Homebridge Crestron communicates with TCP.
 
 ### HARDWARE Prerequisites
 1. Raspberry(Or other devices that can install homebridge, such as NAS, Win, MAC...)
-2. Crestron Professor(Series 3 and Series 4 mainframes supporting SIMPL programming)
+2. Crestron Processor(Series 3 and Series 4 mainframes supporting SIMPL programming)
 
 ### SOFTWARE Prerequisites
 1. install Homebridge [Raspberry OS](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian)
