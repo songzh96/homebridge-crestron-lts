@@ -109,7 +109,7 @@ export class ThermostatAccessory {
     const tmpTargetThermostatState = value;
     this.States.TargetState = tmpTargetThermostatState;
     this.States.CurrentState = tmpTargetThermostatState;
-    this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetThermostatState By Crestron Processor -> ${this.States.TargetThermostatState}`);
+    this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetThermostatState By Crestron Processor -> ${this.States.TargetState}`);
     this.service.updateCharacteristic(this.platform.Characteristic.TargetHeatingCoolingState, this.States.TargetState);
     this.service.updateCharacteristic(this.platform.Characteristic.CurrentHeatingCoolingState, this.States.CurrentState);
   }
@@ -118,7 +118,7 @@ export class ThermostatAccessory {
     const tmpTargetTemperature = value;
     if (this.States.TargetTemperature !== tmpTargetTemperature) {
       this.States.TargetTemperature = tmpTargetTemperature;
-      this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetTemperature By Crestron Processor -> ${this.States.tmpTargetTemperature}`);
+      this.platform.log.debug(`${this.deviceType}:${this.id}: Set Characteristic TargetTemperature By Crestron Processor -> ${this.States.TargetTemperature}`);
       this.service.updateCharacteristic(this.platform.Characteristic.TargetTemperature, this.States.TargetTemperature);
     }
   }
